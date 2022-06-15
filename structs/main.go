@@ -26,15 +26,17 @@ func main() {
 			zipCode: 12345,
 		},
 	}
-	//pointers are needed in go to find the copy renamed "Jim"
+	//pointers are needed in Go
+	// jimPointer := &jim (var is not needed - Go can understand it from jim)
 	jim.updateName("Jim")
 	jim.printPerson()
+	
 }
 
 func (p person) printPerson() {
 	fmt.Printf("%+v", p)
 }
-
-func (p person) updateName(newFirstName string) {
-     p.firstName = newFirstName
+// * is asking for the memory address
+func (pointerToPerson *person) updateName(newFirstName string) {
+     (*pointerToPerson).firstName = newFirstName
 }
